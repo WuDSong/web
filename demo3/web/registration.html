@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>registration</title>
+    <style>
+        .submit {
+            margin-top: 10px;
+            width: 100px;
+            height: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<form action="DRegistration">
+    <hr>
+    <span>性别：</span>
+    <label for="1">男</label><input type="radio" name="sex" id="1" value="男">
+    <label for="2">女</label><input type="radio" name="sex" id="2" value="女">
+    <label for="3">保密</label><input type="radio" name="sex" id="3" checked value="保密">
+    <br>
+    爱好:
+    <input type="checkbox" name="favorite" value="nba"> NBA &nbsp;
+    <input type="checkbox" name="favorite" value="music"> 音乐 &nbsp;
+    <input type="checkbox" name="favorite" value="movie"> 电影 &nbsp;
+    <input type="checkbox" name="favorite" value="internet"> 上网 &nbsp;
+    <br>
+    学历:
+    <select name="学历" id="">
+        <option value="本科">本科</option>
+        <option value="高中">高中</option>
+        <option value="初中">初中</option>
+        <option value="文盲">文盲</option>
+    </select>
+    <br>
+    自我介绍：
+    <textarea name="introduce" id="" cols="50" rows="5"></textarea>
+    <br>
+    接受协议：<input type="checkbox" name="accept" >是否接受许可协议
+    <br>
+    <input type="submit" value="提交" class="submit">
+</form>
+</body>
+</html>

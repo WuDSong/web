@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="GBK">
+
+    <title>登录</title>
+    <style>
+        .submit {
+            margin-top: 10px;
+            width: 150px;
+            height: 30px;
+            border-radius: 10px;
+        }
+
+        span {
+            width: 80px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<form action="ServletLogin" method="post">
+    <span>用户名：</span><input type="text" name="username"><br>
+    <span>密码：</span><input type="password" name="password"><br>
+    <input type="submit" value="登录" class="submit">
+    <hr>
+</form>
+</body>
+</html>

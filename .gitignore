@@ -1,0 +1,5 @@
+# 项目排除路径
+/demo0/web/WEB-INF/classes/
+/demo2/web/WEB-INF/classes/
+/demo3/web/WEB-INF/classes/
+/out/

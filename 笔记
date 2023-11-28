@@ -1,0 +1,37 @@
+吴冬松 219074181
+***这个项目无法创建demo1,会出错，之前配错环境
+*request
+    。作用域：拥有存储数据的空间，作用范围是一次请求有效(一次请求可以经过多次转发)
+    。可以将数据存入request后，在一次请求过程中的任何位置进行获取
+    。可传递任何数据(基本数据类型、对象、数组、集合等)
+    。存数据：request.setAttribute(key,value);
+    。以键值对形式存储在request作用域中。key为String类型，value为Object类型•取数据：request.getAttribute(key);
+    。通过String类型的key访问Object类型的value
+
+*servlet
+
+    。缺点：Servlet本身不会直接导致线程安全问题。每个请求都会在Servlet容器中创建一个独立的线程来处理，因此多个请求将会并发执行，但它们是相互独立的。
+    然而，在编写Servlet时，如果在“Servlet类的成员变量”中存储了共享状态信息，并且这些变量可能被多个线程同时访问和修改，就有可能出现线程安全问题。
+        @WebServlet(name = "MyServlet", value = "/MyServlet")
+        public class MyServlet extends HttpServlet {
+            private int count; // 共享状态的成员变量
+
+            protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                count++; // 线程非安全操作
+                response.getWriter().println("Count: " + count);
+            }
+        }
+    。解决方法：1.不使用实例对象，尽量使用局部对象/变量
+            2.使用同步锁synchronized (对象锁，可用this),wds ： 但是后面的会等前面的执行完，导致后来的线程延迟，降低用户体验
+
+*拦截器
+    filterName参数定义了过滤器的名称，而value参数定义了哪些URL模式应该被过滤器处理。在这个例子中，"/*"意味着过滤器将应用于所有URL模式。
+    @WebFilter注解告诉服务器这个类是一个过滤器，并且应用于所有URL模式。
+
+
+
+*运行网页：
+    1.如果在网址后面直接 加项目名默认的是项目名的index文件，在Tomcat设置
+    2.在项目名后面继续加 / 如果直接加servlet的URL名字的话会默认使用一次servlet，每个类目前设置
+    3.不同项目之间的文件可以同名
+    4.调用html出现乱码：(1)最好用jsp (2)加<meta charset="GBK"> (3)
