@@ -13,6 +13,7 @@ public class ServletF extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");//设置解读
         PrintWriter out = response.getWriter();
+
         HttpSession httpSession=request.getSession();
         String id=httpSession.getId();//获取Session标识符Id
         //Session保存到cookie
