@@ -17,7 +17,6 @@ public class ServletLogin extends HttpServlet {
         //获得客户端参数
         String uname= request.getParameter("username");
         String psw=request.getParameter("password");
-
         if("admin".equals(uname)&&"123".equals(psw)){
             request.setAttribute("uname","admin");
             request.getRequestDispatcher("Servlet2").forward(request,response);
