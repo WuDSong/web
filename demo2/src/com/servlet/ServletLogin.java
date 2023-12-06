@@ -21,7 +21,7 @@ public class ServletLogin extends HttpServlet {
             request.setAttribute("uname","admin");
             request.getRequestDispatcher("Servlet2").forward(request,response);
         }else {
-            out.println("<h1>用户名或密码错误</h1>");
+            out.println("<h1>用户名或密码错误,未注册?</h1>");
             request.getRequestDispatcher("login.html").include(request,response);
             //request.getRequestDispatcher("login.jsp").include(request,response);
         }
