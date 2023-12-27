@@ -19,6 +19,7 @@ public class ListGoodServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<title>购物-ing</title>");
+
         out.println("<style> li {display: grid;grid-template-columns: 200px 200px 150px;overflow: auto;} </style>");
         out.println("</head>");
         out.println("<body>");
@@ -26,6 +27,7 @@ public class ListGoodServlet extends HttpServlet {
         String path=request.getContextPath()+"/cartServlet";
         out.println("<a href='"+path+"' style='float: right ;margin: 20px; font-weight: 700; color: #000;' >我的购物车</a>");
         out.println("<ul>");
+
         for(Good good:goods){
             //用户点击超链接，获取其id，用get
             String url=request.getContextPath()+"/PutServlet?id="+good.getId();

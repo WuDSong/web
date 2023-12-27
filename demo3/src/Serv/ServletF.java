@@ -16,11 +16,13 @@ public class ServletF extends HttpServlet {
 
         HttpSession httpSession=request.getSession();
         String id=httpSession.getId();//获取Session标识符Id
+        httpSession.setMaxInactiveInterval(60*60*24);
+
         //Session保存到cookie
         Cookie cookie=new Cookie("JSESSIONID",id);
         cookie.setMaxAge(60*60*24);
         //写数据到Session
-        httpSession.setAttribute("name","abc");
+        httpSession.setAttribute("name","wds");
         if(httpSession.isNew()){
             out.println("新建的"+id);
         }else out.println("旧的"+id);

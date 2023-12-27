@@ -36,3 +36,58 @@
     3.不同项目之间的文件可以同名
     4.调用html出现乱码：(1)最好用jsp (2)加<meta charset="GBK"> (3)
     5.每个servlet对应一个页面
+
+
+*目前我知道的跳转，传递数据
+    1.链接？值1=...&& 值2=...  (传递简单数据)   取:request.getParameter("id");
+    2.cookie:
+            //创建cookie
+            Cookie cookie=new Cookie("name","admin");
+            //保存cookie到计算机单位s
+            cookie.setMaxAge(60*60*24);
+            //将cookie放入响应
+            response.addCookie(cookie);
+    ----------------------------------------------------------------------
+            //读cookie
+            Cookie []cookies=request.getCookies();
+            //遍历
+            if(cookies.length!=0){
+                for(Cookie ck:cookies){
+                    System.out.println(ck.getName()+"====="+ck.getValue());
+                }
+            }
+    ---------------------------------------------------
+    3.session
+        HttpSession httpSession=request.getSession();
+        String id=httpSession.getId();//获取Session标识符Id
+        //Session保存到cookie
+        Cookie cookie=new Cookie("JSESSIONID",id);
+        cookie.setMaxAge(60*60*24);
+        //写数据到Session
+        httpSession.setAttribute("name","abc");
+        if(httpSession.isNew()){
+            out.println("新建的"+id);
+        }else out.println("旧的"+id);
+        //获取数据写在了ServletE
+
+        HttpSession httpSession=request.getSession();
+        String uname=httpSession.getAttribute("name").toString();
+
+
+    4.
+       //存数据在 request 中
+       request.setAttribute("uname","WuDongSong");
+       //1.获取请求分派对象,请求转给Servlet2处理，但是浏览器路径不变
+       RequestDispatcher rd=request.getRequestDispatcher("Servlet2");
+       rd.forward(request,response);
+
+       //2.获取请求分配对象  参数URL:
+       RequestDispatcher rd=request.getRequestDispatcher("Servlet2");
+       rd.include(request,response);
+
+         //取request数据
+                String str=request.getAttribute("uname").toString();
+
+    5.表单
+        //获得客户端参数
+        String[] sex = request.getParameterValues("sex"); //性别

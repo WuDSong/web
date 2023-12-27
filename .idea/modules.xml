@@ -3,11 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Shopping/Shopping.iml" filepath="$PROJECT_DIR$/Shopping/Shopping.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebCourseDesign/WebCourseDesign.iml" filepath="$PROJECT_DIR$/WebCourseDesign/WebCourseDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo0/demo0.iml" filepath="$PROJECT_DIR$/demo0/demo0.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo2/demo2.iml" filepath="$PROJECT_DIR$/demo2/demo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo3/demo3.iml" filepath="$PROJECT_DIR$/demo3/demo3.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdbcdemo1/jdbcdemo1.iml" filepath="$PROJECT_DIR$/jdbcdemo1/jdbcdemo1.iml" />
       <module fileurl="file://$PROJECT_DIR$/loginSession/loginSession.iml" filepath="$PROJECT_DIR$/loginSession/loginSession.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wds/wds.iml" filepath="$PROJECT_DIR$/wds/wds.iml" />
       <module fileurl="file://$PROJECT_DIR$/web.iml" filepath="$PROJECT_DIR$/web.iml" />
     </modules>
   </component>

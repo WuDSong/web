@@ -16,6 +16,7 @@ public class ServletE extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String lastTime=null;
+        //读cookie
         Cookie[]cookies=request.getCookies();
         if(cookies.length!=0){
             for(Cookie ck:cookies){
@@ -31,10 +32,13 @@ public class ServletE extends HttpServlet {
         //////////////////////////////////////////////////////////////////////////
         HttpSession httpSession=request.getSession();
         String uname=httpSession.getAttribute("name").toString();
+
         //////////////////////////////////////////////////////////////////////////
+
         if(lastTime!=null)
             out.println(uname+"上次时间"+lastTime);
         else out.println(uname+"首次");
+
         //获取上次访问时间 并 保存这次
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日hh时mm分ss秒");
         String time=sdf.format(new Date());
