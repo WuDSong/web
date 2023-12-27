@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+    padding: 30px 0;
+    background-color: rgb(242, 242, 242);
+}
+
+.good {
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.5s;
+    border: 2px solid white;
+}
+
+.good:hover {
+    border: 2px solid orange;
+}
+
+.gName,
+.gPrice {
+    text-align: center;
+}
+
+.btn{
+    margin: 5px;
+    padding: 2px;
+    background-color: white;
+}
+
+.btnLogin {
+    margin: 10px;
+    width: 120px;
+    height: 45px;
+    border: black 2px solid;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: white;
+    transition: all 0.5s;
+}
+
+.btnLogin:hover {
+    width: 150px;
+    border: #ff6666 5px solid;
+}
+
+.popup {
+    margin-top: 10px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.sign {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(96, 255, 202);
+    border-radius: 50%;
+}
