@@ -44,3 +44,14 @@
     bottom: 0;
     font-weight: bolder;
 }
+.addToOrder{
+    margin-top: 20px;
+    height: 50px;
+    /* background-color: rgb(255, 169, 9); */
+    background-color: rgb(255, 202, 42);
+    border-radius: 5px;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    font-weight: bolder;
+}

@@ -27,8 +27,8 @@ public class cartServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<title>购物车</title>");
-        out.println("<style> li {display: grid;grid-template-columns: 400px 150px 150px 100px;overflow: auto;} </style>");
-        out.println("</head>");
+        out.println("<style> li {display: grid;grid-template-columns: 110px 300px 150px 150px 100px;margin-bottom: 5px;} </style>");
+        out.println("<link rel=\"stylesheet\" href=\"./css/cart.css\"></head>");
         out.println("<body>");
 
         HttpSession httpSession=request.getSession();
@@ -38,10 +38,11 @@ public class cartServlet extends HttpServlet {
             return;
         HashMap<Integer,Integer> cart=(HashMap<Integer, Integer>) httpSession.getAttribute("cart");
         if(cart==null||cart.isEmpty()){
-            out.println("<h2>对不起，您未购买任何东西</h2>");
+            out.println("<h2>对不起，您未购买任何东西</h2><hr>");
         }else {
             out.println("<h1>您的选购的商品如下：</h1>");
-            out.println("<ul>");
+            out.println("<li><span>物品</span><span>名字</span><span>数量</span><span>小计</span></li>");
+            out.println("<hr><ul>");
             float sumPrice=0;
             Service service=new Service(DBUtils.getConnection());
             Iterator<Map.Entry<Integer, Integer>> iterator = cart.entrySet().iterator();
@@ -52,6 +53,7 @@ public class cartServlet extends HttpServlet {
                 Good good=service.getGoodById(key);
                 // 处理键值对
                 out.println("<li>");
+                out.println("<img src=\"./img/"+good.getPicture()+"\" alt=\"\" height=\"75px\">");
                 out.println("<span>"+good.getName()+"</span>");
                 out.println("<span>×"+value+"</span>");
                 float price=good.getPrice()*value;
@@ -62,10 +64,12 @@ public class cartServlet extends HttpServlet {
             }
 
             DBUtils.closeAll(service.connection,null,null);
-            out.println("</ul>");
+            out.println("</ul><hr>");
             out.println("总价：￥"+sumPrice);
         }
-        out.println("<a href='index.jsp' style='margin: 20px; font-weight: 700;'>返回继续购物</a>");
+        out.println("<a href='index.jsp' style='margin: 20px; font-weight: 700;' class=\"btn\">返回继续购物</a>");
+        out.println("<a href='RemoveServlet' style='margin: 20px; font-weight: 700;' class=\"btn\">清空购物车</a>");
+        out.println("<a href='submitOrderServlet' style='margin: 20px; font-weight: 700;' class=\"btn\">全部下单</a>");
         out.println("<script src=\"https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js\"></script>");
         out.println("<script>const buttons = document.querySelectorAll('button');\n" +
                 "        buttons.forEach(button => {\n" +

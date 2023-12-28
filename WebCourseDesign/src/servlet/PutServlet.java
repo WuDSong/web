@@ -72,16 +72,13 @@ public class PutServlet extends HttpServlet {
                     message = "添加购物车成功";
                 }
             }
-            int accept = (int) session.getAttribute("accept");
-
+            //int accept = (int) session.getAttribute("accept");
             //Session保存到cookie
-            String sessionId = session.getId();//获取Session标识符Id
-            Cookie cookie = new Cookie("JSESSIONID", sessionId);
-            cookie.setMaxAge(60 * 60 * 24 * 2);
-            if (session.isNew()) {
-                System.out.println("新建的session" + sessionId);
-            } else System.out.println("旧的session" + sessionId);
-            response.addCookie(cookie);
+//            String sessionId = session.getId();//获取Session标识符Id
+//            System.out.println("放入购物车的Session id"+sessionId);
+//            Cookie cookie = new Cookie("JSESSIONID", sessionId);
+//            cookie.setMaxAge(60 * 60 * 24 * 2);
+//            response.addCookie(cookie);
 
         }
         String jsonResponse = "{\"code\":\"" + code + "\",\"message\":\"" + message + "\"}"; // 构造JSON格式的响应数据

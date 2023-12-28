@@ -1,6 +1,5 @@
 package servlet;
 
-import dao.Dao;
 import po.Good;
 import po.UserBean;
 import service.Service;
@@ -11,13 +10,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "TSer", value = "/TSer")
-public class TSer extends HttpServlet {
+public class TestSer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 设置响应的字符编码为UTF-8

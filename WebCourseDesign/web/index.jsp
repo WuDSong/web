@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-<% UserBean userBean = (UserBean) request.getSession().getAttribute("user");
+<%  HttpSession httpSession=request.getSession();
+    UserBean userBean = (UserBean) httpSession.getAttribute("user");
+
  if (userBean != null && userBean.getId() > 0) { %>
 <div class="popup" id="welcomePopup">
     <span class="sign"></span>
@@ -34,6 +36,7 @@
 <div style="text-align: right;">
     <span><%=userBean.getUname()%>></span>
     <a href="cartServlet" class="btn"><button type="button" value="查看我的购物车" class="btn">我的购物车</button></a>
+    <a href="myOrderServlet" class="btn"><button type="button" value="我的订单" class="btn">我的订单</button></a>
     <a href="exitServlet" class="btn"><button type="button" value="退出" class="btn">退出账户</button></a>
     <a href="logoutServlet" class="btn"><button type="button" value="去注销" class="btn">注销账户</button></a>
 </div>

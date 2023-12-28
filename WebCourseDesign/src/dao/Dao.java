@@ -1,6 +1,7 @@
 package dao;
 
 import po.Good;
+import po.Order;
 import po.UserBean;
 import util.DBUtils;
 
@@ -105,5 +106,40 @@ public class Dao {
         }
         DBUtils.closeAll(null,preparedStatement,resultSet);
         return good;
+    }
+
+    public void insertOrder(int uid,int gid,int num,Connection connection) throws SQLException {
+        String sql="INSERT INTO orders (uid, gid, gnum) VALUES (?,?,?);";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, uid);
+        preparedStatement.setInt(2, gid);
+        preparedStatement.setInt(3,num);
+        int row = preparedStatement.executeUpdate();//一定写这东西，不写的话读不进数据库
+        if(row>0){
+            String sql1="UPDATE items SET number = number-? WHERE id = ?;";
+            PreparedStatement preparedStatement1=connection.prepareStatement(sql1);
+            preparedStatement1.setInt(1,num);
+            preparedStatement1.setInt(2,gid);
+            int rowtemp = preparedStatement1.executeUpdate();
+            DBUtils.closeAll(null, preparedStatement1, null);
+        }
+        DBUtils.closeAll(null, preparedStatement, null);
+    }
+    public List<Order> getOrderByUid(int id, Connection connection) throws SQLException {
+        List<Order> myOrder=new ArrayList<>();
+        String sql="SELECT * FROM orders WHERE uid = ?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Order order=new Order();
+            order.setUid(id);
+            order.setGid(resultSet.getInt(3));
+            order.setGnum(resultSet.getInt(4));
+            order.setOrderTime(resultSet.getTimestamp(5));
+            myOrder.add(order);
+        }
+        DBUtils.closeAll(null,preparedStatement,resultSet);
+        return myOrder;
     }
 }

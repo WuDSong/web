@@ -7,13 +7,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "TSer1", value = "/TSer1")
-public class TSer1 extends HttpServlet {
+public class TestSer1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
-
         //System.out.println("接受的axios的异步请求："+data);
     }
 

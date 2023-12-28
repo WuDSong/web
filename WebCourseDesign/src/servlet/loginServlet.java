@@ -26,11 +26,10 @@ public class loginServlet extends HttpServlet {
         String psw = request.getParameter("password");
         UserBean userBean = new UserBean(uname, psw);
         Service service;
-
+        //数据库检查
         service = new Service(DBUtils.getConnection());//初始化服务
         service.login(userBean);
         DBUtils.closeAll(service.connection, null, null);
-
         //用session实现页面直接的传输了
         HttpSession httpSession = request.getSession();
         //获取验证码
@@ -45,19 +44,15 @@ public class loginServlet extends HttpServlet {
             return;
         }
         if (userBean.getId() > 0) {
-            response.sendRedirect("index.jsp");
-            //写数据到Session
-            httpSession.setAttribute("user", userBean);
-            if (accept != null) {
-                httpSession.setAttribute("accept",1);
-                System.out.println("2天内自动登录");
-                //Session保存到cookie
-                String sessionId=httpSession.getId();//获取Session标识符Id
+            httpSession.setAttribute("user",userBean);
+            if(accept!=null&&accept.equals("")){
+                String sessionId = httpSession.getId();//获取Session标识符Id
+                System.out.println("登录的Session id"+sessionId);
                 Cookie cookie = new Cookie("JSESSIONID", sessionId);
-                cookie.setMaxAge(60*60*24*2);
+                cookie.setMaxAge(60 * 60 * 24 * 2);
                 response.addCookie(cookie);
-            }else httpSession.setAttribute("accept",0);
-
+            }
+            response.sendRedirect("index.jsp");
         } else {
             request.getRequestDispatcher("login.jsp").include(request, response);
             out.println("<script>let h1=document.querySelector('h1');h1.innerText='用户名或密码错误';h1.style.color='red'</script>");

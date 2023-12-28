@@ -37,6 +37,9 @@
         <button class="addToCart" type="button">
             <div class="iconfont icon-gouwuchetianjia" style="font-size: 20px;">&nbsp;放入购物车</div>
         </button>
+<%--        <button class="addToOrder" type="button">--%>
+<%--            <div style="font-size: 20px;">&nbsp;立即购买</div>--%>
+<%--        </button>--%>
 <%--        <button class="test" type="button">123123</button>--%>
     </div>
 </form>
@@ -52,6 +55,36 @@
             data.append('number',num)
             axios({
                 url: 'http://localhost:8080/WCD/PutServlet',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: data
+            }).then(result => {
+                console.log('添加到购物车的结果：',result.data);
+                let code=result.data.code
+                let message=result.data.message
+                if(code==1||code==2){
+                    num=0
+                    ChangeNum(0)
+                }
+                alert(message)
+            }).catch(error => {
+                console.log('出错误：');
+                console.log(error);
+            })
+        }
+    })
+    document.querySelector(".addToOrder").addEventListener("click", () => {
+        if (num == 0){
+            alert("购买数量不能为零")
+        }
+        else {
+            let data = new URLSearchParams();
+            data.append('gid', '<%= good.getId()%>');
+            data.append('number',num)
+            axios({
+                url: 'http://localhost:8080/WCD/submitOrderServlet',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
