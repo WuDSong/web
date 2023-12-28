@@ -1,0 +1,11 @@
+.btn{
+    margin: 5px;
+    padding: 2px;
+    background-color: white;
+    border: #222222 1px solid;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
