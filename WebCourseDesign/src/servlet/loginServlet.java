@@ -45,7 +45,7 @@ public class loginServlet extends HttpServlet {
         }
         if (userBean.getId() > 0) {
             httpSession.setAttribute("user",userBean);
-            if(accept!=null&&accept.equals("")){
+            if(accept!=null&&!accept.equals("")){
                 String sessionId = httpSession.getId();//获取Session标识符Id
                 System.out.println("登录的Session id"+sessionId);
                 Cookie cookie = new Cookie("JSESSIONID", sessionId);

@@ -32,9 +32,8 @@ public class logoutServlet extends HttpServlet {
             service.logout(userBeant);//执行服务层 数据库对用户注销
             DBUtils.closeAll(service.connection, null, null);
             System.out.println("--删除cookie");
-            httpSession.setAttribute("user", null);//删除cookie的用户信息
-            request.setAttribute("user", null);//删除请求用户的信息
-            httpSession.setAttribute("cart",null);//删除购物车信息
+            httpSession.removeAttribute("cart");
+            httpSession.removeAttribute("user");
         }
         response.sendRedirect("index.jsp");
     }

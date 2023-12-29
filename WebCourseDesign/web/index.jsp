@@ -62,7 +62,7 @@
 </a>
 <script>
     document.body.style.backgroundSize = 'cover'
-    document.body.style.backgroundImage = "url('https://ts1.cn.mm.bing.net/th/id/R-C.f531b038d3dd51a4aaf8f4090dfd642b?rik=C9fk217gkICYAA&riu=http%3a%2f%2fwww.sinowy.com%2fuploadfiles%2fpictures%2fnews%2f20171114110212_0604.jpg&ehk=JfXYXSMpI8o6OV6DzGmoELG4F3HYQK6TfKFE1o%2fTKXo%3d&risl=&pid=ImgRaw&r=0')";
+    document.body.style.backgroundImage = "url('./img/index.png')";
 </script>
 <% }
 %>

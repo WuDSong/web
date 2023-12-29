@@ -26,12 +26,12 @@ public class myOrderServlet extends HttpServlet {
         List<Order> orders=service.getMyOrder(userBean.getId());
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>购物车</title>");
-        out.println("<style> li {display: grid;grid-template-columns: 110px 300px 150px 150px 100px;overflow: auto;} </style>");
+        out.println("<title>我的订单</title>");
+        out.println("<style> li {display: grid;grid-template-columns: 110px 300px 150px 150px 150px 200px;overflow: auto;} </style>");
         out.println("</head>");
         out.println("<body><ul>");
         float sumPrice=0;
-        out.println("<li><span>物品</span><span>名字</span><span>单价</span><span>数量</span><span>小计</span></li>");
+        out.println("<li><span>物品</span><span>名字</span><span>单价</span><span>数量</span><span>小计</span><span>交易时间</span></li>");
         out.println("<hr>");
         for (int i = 0; i < orders.size(); i++) {
             Order currentOrder=orders.get(i);
@@ -43,6 +43,7 @@ public class myOrderServlet extends HttpServlet {
             out.println("<span>×"+currentOrder.getGnum()+"</span>");
             float price=tempGood.getPrice()* currentOrder.getGnum();
             out.println("<span>￥"+price+"</span>");
+            out.println("<span>"+currentOrder.getOrderTime()+"</span>");
             sumPrice+=price;
             out.println("</li>");
         }
